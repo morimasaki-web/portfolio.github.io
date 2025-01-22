@@ -1,0 +1,124 @@
+/* 全体のリセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 背景とフォントの設定 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ヘッダー */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-image {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* プロジェクトセクション */
+.projects {
+    padding: 30px;
+    background-color: #fff;
+}
+
+.projects h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.projects ul {
+    list-style-type: none;
+}
+
+.projects li {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.projects h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.projects p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* フッター */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #333;
+    color: #fff;
+    margin-top: 30px;
+}
+
+
+/* Talesmith紹介ページのスタイル */
+
+.introduction, .features, .technologies, .screenshots {
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.introduction h2, .features h2, .technologies h2, .screenshots h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.introduction p, .features ul, .technologies ul {
+    font-size: 1rem;
+    color: #666;
+}
+
+.features ul, .technologies ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.screenshot {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #333;
+    color: #fff;
+    margin-top: 30px;
+}
