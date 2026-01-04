@@ -40,6 +40,75 @@ h1 {
     margin-bottom: 10px;
 }
 
+.subtitle {
+    color: #fff;
+    opacity: 0.9;
+    max-width: 900px;
+}
+
+.nav {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+a {
+    color: inherit;
+}
+
+.projects a {
+    color: #333;
+    text-decoration: underline;
+}
+
+.note {
+    color: #666;
+    margin-top: 10px;
+}
+
+.design-details {
+    margin-top: 12px;
+}
+
+.design-point {
+    margin-top: 14px;
+}
+
+.design-point h3 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+}
+
+.design-point p {
+    color: #666;
+    margin-top: 6px;
+}
+
+.cta {
+    margin-top: 14px;
+}
+
+.cta-link {
+    display: inline-block;
+    padding: 10px 14px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.figure {
+    margin-top: 15px;
+}
+
+figcaption {
+    color: #666;
+    font-size: 0.95rem;
+    margin-top: 8px;
+}
+
 /* プロジェクトセクション */
 .projects {
     padding: 30px;
@@ -113,6 +182,54 @@ footer {
     margin-top: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.zoomable {
+    cursor: zoom-in;
+}
+
+.image-dialog {
+    border: none;
+    padding: 0;
+    background: transparent;
+    max-width: min(92vw, 1200px);
+}
+
+.image-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.image-dialog-content {
+    background-color: #fff;
+    color: #333;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.image-dialog-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.image-dialog-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 8px;
+    border: none;
+    border-radius: 8px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+.image-dialog-caption {
+    color: #666;
+    margin-top: 10px;
 }
 
 footer {

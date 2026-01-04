@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sheet Hive | morimasakiのポートフォリオ</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <div class="profile">
+            <h1>Sheet Hive</h1>
+            <p class="subtitle">業務データの「確認作業」を、再現可能なルールに落とす</p>
+            <p class="subtitle">
+                CSV / スプレッドシートに散らばる属人化したチェック作業を、
+                設定可能な検証ルールとして整理するツールです。
+            </p>
+            <nav class="nav">
+                <a href="../index.html">← Homeへ戻る</a>
+                <a href="#demo">デモ</a>
+                <a href="#links">Links</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="introduction">
+        <h2>Sheet Hive</h2>
+        <p>
+            Sheet-Hive は、スプレッドシート由来データの扱いで起きがちな「列名ゆれ」「型ゆれ」「入力ミス」を、<br>
+            <strong>シート管理</strong>（対象データの整理）→ <strong>マッピング</strong>（列の対応付け）→
+            <strong>自動変換</strong>（正規化）→ <strong>バリデーション</strong>（検証）→ <strong>ダッシュボード</strong>（可視化）
+            まで<br>
+            一連の流れとして扱えるようにすることを目指したアプリケーションです。
+        </p>
+
+        <figure class="figure">
+            <img src="images/concept.png" alt="概念図" class="screenshot">
+            <figcaption>
+            担当者の経験に依存していたチェック作業を、
+            「設定可能なルール」として分離・再利用できる構造を目指した。
+            </figcaption>
+        </figure>
+    </section>
+
+    <section class="features">
+        <h2>業務で頻発する問題構造</h2>
+        <ul>
+            <li>CSV / シートの形式が揃っていない</li>
+            <li>チェック内容が担当者の経験に依存して属人化しやすい</li>
+            <li>修正ルールが言語化されず、再利用・引継ぎが難しい</li>
+        </ul>
+         </br>
+        <p>
+            問題は「データ」ではなく、チェックロジックが構造化されていないことにあると考え、
+            ルールを定義・適用する仕組みを作ることで解決を図ろうとしました。
+        </p>
+
+        <!-- <figure class="figure">
+            <img src="https://picsum.photos/1200/600" alt="課題例の図（仮）" class="screenshot">
+            <figcaption>図2: 形式ゆれ・属人チェックの具体例（差し替え予定）</figcaption>
+        </figure> 
+        -->
+    </section>
+
+    <!-- <section class="technologies">
+        <h2>解決アプローチ（設計の芯）</h2>
+        <ol>
+            <li><strong>ルールを UI で定義できる</strong>（誰が設定しても同じ結果になる）</li>
+            <li><strong>汎用と個別を分離する</strong>（共通化と拡張を分ける）</li>
+            <li><strong>結果が「説明可能」である</strong>（なぜ NG なのかが分かる）</li>
+        </ol>
+
+        <figure class="figure">
+            <img src="https://picsum.photos/1200/600" alt="処理フロー図（仮）" class="screenshot">
+            <figcaption>図3: シート管理〜自動変換〜検証〜可視化までの流れ（差し替え予定）</figcaption>
+        </figure>
+    </section> -->
+
+    <section class="features">
+        <h2>機能</h2>
+        <ul>
+            <li><strong>シート管理</strong>：プロジェクト / フォルダ / シートを整理して、対象データを扱いやすくする</li>
+            <li><strong>ダッシュボード</strong>：品質状況（エラー行数など）を集計して可視化する</li>
+            <li><strong>マッピング</strong>：列の対応付け（入力の揺れを吸収する入口）</li>
+            <li><strong>自動変換</strong>：ルールに基づき、型・表記・フォーマットを正規化する</li>
+            <li><strong>バリデーション</strong>：型・フォーマット等の検証（どの行が、なぜNGかを説明可能に）</li>
+        </ul>
+
+        <figure class="figure">
+            <img src="images/mapping.png" alt="マッピング" class="screenshot">
+            <figcaption>マッピング（列の対応付け）</figcaption>
+        </figure>
+        <figure class="figure">
+            <img src="images/transform.png" alt="バリデーション" class="screenshot">
+            <figcaption>バリデーション（検証ルール設定・実行）</figcaption>
+        </figure>
+    </section>
+
+    <section class="technologies">
+        <h2>設計上の工夫</h2>
+
+        <div class="design-details">
+            <div class="design-point">
+                <h3>UI と検証ロジックを分離</h3>
+                <p>
+                    画面は「ルールを編集する」「結果を見て次のアクションに繋げる」ことに集中し、
+                    検証ロジックは入力に対して決定的に結果を返す形（UIに依存しない形）で設計しています。
+                </p>
+                <p>
+                    これにより、UIの変更（画面構成・見せ方の変更）と、検証ルールの追加/修正を切り離せるため、
+                    仕様変更時の影響範囲が読みやすくなります。
+                </p>
+            </div>
+
+            <div class="design-point">
+                <h3>ルール定義をデータとして扱う</h3>
+                <p>
+                    「どの列に、どの検証/変換を適用するか」を設定として持ち、実行時はその設定を読み取って処理を組み立てます。
+                </p>
+                <p>
+                    ルールをデータ化すると、同じルールを別のデータにも再適用でき、
+                    チーム内で共有・テンプレート化して“再現可能なチェック”として運用できます。
+                </p>
+            </div>
+
+            <div class="design-point">
+                <h3>業務差分を拡張点に隔離</h3>
+                <p>
+                    業務固有の特殊なバリデーションルールを、拡張機能として組み込める構造を用意しています。
+                </p>
+                <p>
+                    その結果、共通部分（マッピング/変換/検証の実行基盤）は安定させつつ、
+                    業務特有の要件は段階的に追加できるようになります。
+                </p>
+            </div>
+        </div>
+
+        <figure class="figure">
+            <img src="images/architecture.png" alt="設計の分離図" class="screenshot">
+            <figcaption>責務分離（UI/検証/拡張ルール）</figcaption>
+        </figure>
+    </section>
+
+    <section class="screenshots">
+        <h2 id="demo">デモ</h2>
+        <p>
+            Web 版の <strong>Demo Mode</strong>（外部サービス: Google Sheets / Firebase に依存しない構成）として、
+            仮データで主要な操作フローを体験できます。
+        </p>
+
+        <div class="cta">
+            <a class="cta-link" href="https://sheet-hive-web.vercel.app/">▶ デモを試す</a>
+        </div>
+
+        <p class="note">
+            ※ 秘密情報を含めず、外部連携なしで動作する構成です。
+        </p>
+    </section>
+
+    <section class="technologies">
+        <h2>利用シーンを想定した構成</h2>
+        <ul>
+            <li>
+                <strong>Web</strong>：
+                Google アカウント認証を前提に、Google Sheets と連携して
+                複数人での確認・共有を想定
+            </li>
+            <li>
+                <strong>Desktop</strong>：
+                ネットワークに依存しない現場利用を想定し、
+                CSV 入出力による完全オフライン構成
+            </li>
+        </ul>
+    </section>
+
+    <section class="technologies">
+        <h2>技術スタック</h2>
+        <ul>
+            <li><strong>Web</strong>：Next.js（App Router）/ React / TypeScript / Tailwind CSS / Recharts</li>
+            <li><strong>Desktop</strong>：Electron</li>
+        </ul>
+    </section>
+
+    <!-- <section class="introduction">
+        <h2>まとめ</h2>
+        <p>
+            SheetHive は「ツールを作る」ことより、業務をどう分解し、再利用可能な形にするかを重視したプロジェクトです。
+            要件を整理し、構造を設計し、その上で実装を行う——その一連の流れを意識して開発しています。
+        </p>
+        <p class="note">
+            （裏テーマ）判断と設計は人間側。実装は手段。
+        </p>
+    </section> -->
+
+    <section class="technologies" id="links">
+        <h2>Links</h2>
+        <ul>
+            <li><a href="https://sheet-hive-web.vercel.app/">デモURL（Vercel）</a></li>
+            <li><a href="https://github.com/sheet-hive/sheet-hive-web">GitHub（sheet-hive-web）</a></li>
+        </ul>
+        <p class="note">
+            ※ デモは秘密情報を含めず、外部連携なしで動作する構成です。
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 morimasaki. All Rights Reserved.</p>
+    </footer>
+
+    <dialog id="image-dialog" class="image-dialog">
+        <div class="image-dialog-content">
+            <button id="image-dialog-close" class="image-dialog-close" type="button" aria-label="閉じる">×</button>
+            <img id="image-dialog-img" class="image-dialog-img" alt="">
+            <p id="image-dialog-caption" class="image-dialog-caption"></p>
+        </div>
+    </dialog>
+
+    <script>
+        (function () {
+            var dialog = document.getElementById('image-dialog');
+            var dialogImg = document.getElementById('image-dialog-img');
+            var dialogCaption = document.getElementById('image-dialog-caption');
+            var closeButton = document.getElementById('image-dialog-close');
+
+            if (!dialog || !dialogImg || !closeButton) return;
+
+            function openDialogForImage(img) {
+                dialogImg.src = img.currentSrc || img.src;
+                dialogImg.alt = img.alt || '';
+
+                var figure = img.closest ? img.closest('figure') : null;
+                var captionEl = figure ? figure.querySelector('figcaption') : null;
+                var captionText = captionEl ? (captionEl.textContent || '').trim() : '';
+
+                if (dialogCaption) {
+                    dialogCaption.textContent = captionText;
+                    dialogCaption.style.display = captionText ? 'block' : 'none';
+                }
+
+                if (dialog.open) dialog.close();
+                dialog.showModal();
+            }
+
+            var images = document.querySelectorAll('img');
+            images.forEach(function (img) {
+                img.classList.add('zoomable');
+                img.addEventListener('click', function () {
+                    openDialogForImage(img);
+                });
+            });
+
+            closeButton.addEventListener('click', function () {
+                dialog.close();
+            });
+
+            dialog.addEventListener('click', function (e) {
+                if (e.target === dialog) dialog.close();
+            });
+        })();
+    </script>
+</body>
+</html>
