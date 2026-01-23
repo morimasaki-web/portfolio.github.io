@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonSu | morimasakiのポートフォリオ</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <div class="profile">
+            <h1>PonSu</h1>
+            <p class="subtitle">申請の状態遷移を、監査可能なイベントで扱う</p>
+            <p class="subtitle">
+                申請フロー（作成→提出→承認/却下→差し戻し→再提出）と監査ログを、
+                “動くデモ”として体験できるようにしたプロジェクトです。
+            </p>
+            <nav class="nav">
+                <a href="../index.html">← Homeへ戻る</a>
+                <a href="#demo">デモ</a>
+                <a href="#links">Links</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="introduction">
+        <h2>PonSu</h2>
+        <p>
+            PonSu は、申請の状態遷移と監査（audit trail）を中核にしたワークフローアプリケーションです。<br>
+            デモでは、外部認証/DB/課金要素を排除し、フロントのみの静的ホスティングで操作フローを確認できるようにしています。
+        </p>
+
+        <div class="figure">
+            <div class="placeholder" role="note" aria-label="スクリーンショット準備中">
+                スクリーンショットは準備中（公開後に差し替え）
+            </div>
+            <figcaption>
+                一覧→詳細→操作→監査ログ、という一連の流れを体験できます。
+            </figcaption>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>デモで体験できること</h2>
+        <ul>
+            <li><strong>申請一覧</strong>：ID / タイトル / ステータス / 更新日時を確認</li>
+            <li><strong>申請詳細</strong>：内容・履歴を確認し、操作へ到達</li>
+            <li><strong>操作</strong>：提出 / 承認 / 却下 / 差し戻し / 再提出</li>
+            <li><strong>監査ログ</strong>：操作が時系列で追える（デモはローカル状態で再現）</li>
+            <li><strong>テーマ</strong>：ライト/ダーク/システム切替</li>
+        </ul>
+    </section>
+
+    <section class="technologies">
+        <h2>設計上の見せどころ（デモの方針）</h2>
+        <div class="design-details">
+            <div class="design-point">
+                <h3>デモはフロントのみで完結</h3>
+                <p>
+                    デモは静的ホスティングを前提にし、外部認証/DB/API呼び出しを行いません。
+                    そのため公開時のリスク（秘密情報混入・課金・個人情報の取り扱い）を物理的に最小化できます。
+                </p>
+            </div>
+
+            <div class="design-point">
+                <h3>本番相当は別モードに分離</h3>
+                <p>
+                    本番相当（バックエンド接続）とデモ（フロントのみ）をモードで切り替え可能な構成にし、
+                    デモのためにアプリ本体の方向性を歪めないようにしています。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="screenshots">
+        <h2 id="demo">デモ</h2>
+        <p>
+            <strong>Demo Mode</strong> は外部サービスに依存せず、仮データで主要な操作フローを体験できます。
+        </p>
+
+        <div class="cta">
+            <a class="cta-link" href="https://ponsu-demo.vercel.app/">▶ デモを試す（Vercel）</a>
+        </div>
+
+        <p class="note">
+            ※ URL は Vercel 公開後に確定して更新します（暫定リンク）。
+        </p>
+    </section>
+
+    <section class="technologies" id="links">
+        <h2>Links</h2>
+        <ul>
+            <li><a href="https://ponsu-demo.vercel.app/">デモURL（Vercel）</a></li>
+            <li><a href="https://github.com/morimasaki-web/ponsu">GitHub（ponsu）</a></li>
+        </ul>
+        <p class="note">
+            ※ デモは秘密情報を含めず、外部連携なしで動作する構成です。
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 morimasaki. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

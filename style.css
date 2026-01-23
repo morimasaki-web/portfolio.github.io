@@ -103,6 +103,20 @@ a {
     margin-top: 15px;
 }
 
+.placeholder {
+    width: 100%;
+    max-width: 900px;
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    color: #666;
+    border: 2px dashed #bbb;
+    border-radius: 8px;
+    padding: 16px;
+}
+
 figcaption {
     color: #666;
     font-size: 0.95rem;
