@@ -26,22 +26,29 @@
     <section class="introduction">
         <h2>PonSu</h2>
         <p>
-            PonSu は、申請の状態遷移と監査（audit trail）を中核にしたワークフローアプリケーションです。<br>
-            デモでは、外部認証/DB/課金要素を排除し、フロントのみの静的ホスティングで操作フローを確認できるようにしています。
+            <strong>PonSu</strong> は、申請業務の状態遷移と監査ログ管理を一体化したワークフローアプリケーションです。<br>
+            申請の「作成→提出→承認/却下→差し戻し→再提出」といった複雑なフローを、状態マシンで厳密に制御し、各操作をイベントとして記録します。<br>
+            監査ログ（audit trail）により「誰が・いつ・どの操作をしたか」を時系列で可視化し、業務の透明性とトレーサビリティを確保します。
         </p>
-
-        <div class="figure">
-            <div class="placeholder" role="note" aria-label="スクリーンショット準備中">
-                スクリーンショットは準備中（公開後に差し替え）
-            </div>
-            <figcaption>
-                一覧→詳細→操作→監査ログ、という一連の流れを体験できます。
-            </figcaption>
-        </div>
+        <p>
+            <strong>主な機能:</strong><br>
+            ・申請ごとの状態遷移管理（状態マシンによる厳密な制御）<br>
+            ・提出・承認・却下・差し戻し・再提出などの操作履歴を監査ログとして記録<br>
+            ・ユーザー種別や申請状態に応じた操作権限の自動判定<br>
+            ・申請一覧・詳細・履歴のリアルタイム表示<br>
+            ・ライト/ダーク/システムのテーマ切替、アクセシビリティ配慮<br>
+            ・フロントエンドは React + TypeScript、状態管理は Context/Reducer パターンを採用
+        </p>
+        <p>
+            <strong>用途・導入メリット:</strong><br>
+            PonSuは、申請業務の標準化・効率化・監査対応を求める現場に最適です。<br>
+            状態遷移や履歴管理をアプリケーションレベルで保証することで、属人化や手作業によるミスを防ぎ、監査やトラブル時の証跡確認も容易になります。<br>
+            また、デモモードを備えており、実運用前に操作感や業務フローを安全に体騯することも可能です。
+        </p>
     </section>
 
     <section class="features">
-        <h2>デモで体験できること</h2>
+        <h2>デモで体騯できること</h2>
         <ul>
             <li><strong>申請一覧</strong>：ID / タイトル / ステータス / 更新日時を確認</li>
             <li><strong>申請詳細</strong>：内容・履歴を確認し、操作へ到達</li>
@@ -51,7 +58,7 @@
         </ul>
     </section>
 
-    <section class="technologies">
+    <!-- <section class="technologies">
         <h2>設計上の見せどころ（デモの方針）</h2>
         <div class="design-details">
             <div class="design-point">
@@ -70,16 +77,16 @@
                 </p>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section class="screenshots">
         <h2 id="demo">デモ</h2>
         <p>
-            <strong>Demo Mode</strong> は外部サービスに依存せず、仮データで主要な操作フローを体験できます。
+            <strong>Demo Mode</strong> は外部サービスに依存せず、仮データで主要な操作フローを体騯できます。
         </p>
 
         <div class="cta">
-            <a class="cta-link" href="https://ponsu-demo.vercel.app/">▶ デモを試す（Vercel）</a>
+            <a class="cta-link" href="https://ponsu.vercel.app/">▶ デモを試す（Vercel）</a>
         </div>
 
         <p class="note">
@@ -90,7 +97,7 @@
     <section class="technologies" id="links">
         <h2>Links</h2>
         <ul>
-            <li><a href="https://ponsu-demo.vercel.app/">デモURL（Vercel）</a></li>
+            <li><a href="https://ponsu.vercel.app/">デモURL（Vercel）</a></li>
             <li><a href="https://github.com/morimasaki-web/ponsu">GitHub（ponsu）</a></li>
         </ul>
         <p class="note">
